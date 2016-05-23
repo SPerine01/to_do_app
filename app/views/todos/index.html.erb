@@ -1,5 +1,8 @@
 <h1>To Do List</h1>
 
+<%= link_to "Add an Item To-Do", new_todo_path %>
+
 <% @todos.each do |todo| %>
-    <li><%=todo.title%></li>
+    <li><%= link_to todo.title, todo_path %></li>
+    <li><%= link_to "edit", edit_todo_path(todo[:id]) %></li>
 <% end %>
