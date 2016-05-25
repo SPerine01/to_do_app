@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
 
 def index
-	@todos = Todo.all
+	@todos = Todo.order("created_at DESC")
 end
 
 def new
@@ -9,13 +9,12 @@ def new
 end
 
 def create
-	@todo = Todo.create(todo_params)
-	redirect_to todo_path(@todo)
+    @todo = Todo.create(todo_params)
+    redirect_to todo_path(@todo)
 end
 
 def show
 	@todo = Todo.find(params[:id])
-	redirect_to todo_path(@todo)
 end
 
 def edit
@@ -24,15 +23,15 @@ end
 
 def update
 	@todo = Todo.find(params[:id])
-	@todo.update todo_params
-
-	redirect_to todo_path(@todo)
+	if @todo.update(todo_params)
+		redirect_to todo_path(@todo)
+	else
+		render "edit"
+	end
 end
 
 def destroy
-	todo = Todo.find(params[:id])
-    todo.destroy
-
+    Todo.find(params[:id]).destroy
     redirect_to root_path
 end
 

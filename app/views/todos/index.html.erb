@@ -1,8 +1,15 @@
 <h1>To Do List</h1>
 
-<%= link_to "Add an Item To-Do", new_todo_path %>
+<h3>
+	<%= link_to "Add an Item To-Do", new_todo_path %>
+</h3>
 
 <% @todos.each do |todo| %>
-    <li><%= link_to todo.title, todo_path %></li>
-    <li><%= link_to "edit", edit_todo_path(todo[:id]) %></li>
+    <li>
+    	<p>
+	      <%= link_to todo.title, todo_path(todo.id) %>
+	      <%= link_to "edit", edit_todo_path(todo[:id]) %>
+	      <%= link_to "delete", todo, method: :delete, data: { confirm: "Are you sure?" }%>
+	    </p>
+    </li>
 <% end %>

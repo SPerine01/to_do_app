@@ -1,10 +1,20 @@
-<%= form_for @todo do |f| %>
+<div id="my_form">	
+	<%= form_for @todo do |f| %>
 
-	<%= label_tag(:title, "title") %>
-	<%= f.text_field :title %>
+	<p>
+	  <%= label_tag(:title, "title") %> </br>
+	  <%= f.text_field :title %>
+	</p>
 
-	<%= label_tag(:description, "description") %>
-	<%= f.text_area :description %>
+	</br>
 
-	<%= f.submit "submit" %>
-<% end %>
+	<p>
+	  <%= label_tag(:description, "description") %> </br>
+	  <%= f.text_area :description %>
+	</p>
+
+	</br>
+
+	  <%= f.submit "submit" %>
+
+	<% end %>
